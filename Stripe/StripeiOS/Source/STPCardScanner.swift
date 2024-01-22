@@ -6,6 +6,7 @@
 //  Copyright © 2020 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import AVFoundation
 import Foundation
 @_spi(STP) import StripeCore
@@ -486,3 +487,4 @@ let STPCardScannerErrorDomain = "STPCardScannerErrorDomain"
 extension STPCardScanner: STPAnalyticsProtocol {
     static var stp_analyticsIdentifier = "STPCardScanner"
 }
+#endif /// visionOS

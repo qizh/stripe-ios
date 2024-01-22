@@ -275,12 +275,14 @@ class STPAddressFieldTableViewCell: UITableViewCell, UITextFieldDelegate, UIPick
             self.textField.keyboardType = .emailAddress
             self.textField.textContentType = .emailAddress
         }
-
+		
+		#if !os(visionOS)
         if !self.lastInList {
             self.textField.inputAccessoryView = self.inputAccessoryToolbar
         } else {
             self.textField.inputAccessoryView = nil
         }
+		#endif /// visionOS
         self.textField.accessibilityLabel = self.textField.placeholder
         self.textField.accessibilityIdentifier = self.accessibilityIdentifierForAddressField(
             type: self.type

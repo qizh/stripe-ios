@@ -41,6 +41,7 @@
 //
 // Copyright (C) 2015 Apple Inc. All Rights Reserved.
 
+#if !os(visionOS)
 import AVFoundation
 import UIKit
 
@@ -88,3 +89,4 @@ class PreviewView: UIView {
         super.layoutSubviews()
     }
 }
+#endif /// visionOS

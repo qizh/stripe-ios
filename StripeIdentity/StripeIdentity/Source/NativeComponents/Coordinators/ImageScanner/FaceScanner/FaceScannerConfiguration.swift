@@ -9,6 +9,7 @@
 import CoreGraphics
 import Foundation
 
+#if !os(visionOS)
 extension FaceScanner {
     struct Configuration: Equatable {
         // MARK: Face Detector
@@ -31,3 +32,4 @@ extension FaceScanner {
 
     }
 }
+#endif /// visionOS

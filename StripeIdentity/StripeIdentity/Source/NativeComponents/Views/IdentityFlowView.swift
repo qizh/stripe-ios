@@ -86,7 +86,9 @@ class IdentityFlowView: UIView {
 
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+		#if !os(visionOS)
         scrollView.keyboardDismissMode = .none
+		#endif /// visionOS
         return scrollView
     }()
 

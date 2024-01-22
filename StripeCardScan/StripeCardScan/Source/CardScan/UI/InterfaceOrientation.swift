@@ -29,6 +29,7 @@ extension UIWindow {
     }
 }
 
+#if !os(visionOS)
 extension AVCaptureVideoOrientation {
     init?(
         deviceOrientation: UIDeviceOrientation
@@ -54,3 +55,4 @@ extension AVCaptureVideoOrientation {
         }
     }
 }
+#endif

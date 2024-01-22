@@ -5,6 +5,7 @@
 //  Created by Jaime Park on 12/9/21.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCore
 import UIKit
@@ -158,3 +159,4 @@ class ScanAnalyticsManager {
         }
     }
 }
+#endif /// visionOS

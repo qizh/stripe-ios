@@ -1,3 +1,4 @@
+#if !os(visionOS)
 @_spi(STP) import StripeCore
 import UIKit
 
@@ -540,3 +541,4 @@ extension UIView {
         self.bottomAnchor.constraint(equalTo: otherView.bottomAnchor).isActive = true
     }
 }
+#endif /// visionOS

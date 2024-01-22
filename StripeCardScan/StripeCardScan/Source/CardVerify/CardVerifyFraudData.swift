@@ -40,7 +40,8 @@ class CardVerifyFraudData: CardScanFraudData {
             /// Calculate the compressed and b64 encoded image sizes in bytes
             let totalImagePayloadSizeInBytes = verificationFramesData.compactMap { $0.imageData }
                 .reduce(0) { $0 + $1.count }
-
+			
+			#if !os(visionOS)
             /// Log the verification payload info + image compression duration
             ScanAnalyticsManager.shared.trackImageCompressionDuration(task: imageCompressionTask)
             ScanAnalyticsManager.shared.logPayloadInfo(
@@ -51,6 +52,7 @@ class CardVerifyFraudData: CardScanFraudData {
                     imagePayloadSize: totalImagePayloadSizeInBytes
                 )
             )
+			#endif
 
             self.verificationFrameDataResults = verificationFramesData
 

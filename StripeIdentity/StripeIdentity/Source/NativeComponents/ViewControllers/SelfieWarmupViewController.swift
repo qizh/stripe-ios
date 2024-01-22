@@ -5,6 +5,7 @@
 //  Created by Chen Cen on 8/15/23.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCore
 @_spi(STP) import StripeUICore
@@ -39,3 +40,4 @@ final class SelfieWarmupViewController: IdentityFlowViewController {
     }
 
 }
+#endif /// visionOS

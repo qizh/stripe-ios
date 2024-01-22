@@ -5,6 +5,7 @@
 //  Created by Chen Cen on 11/6/23.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCore
 @_spi(STP) import StripeUICore
@@ -46,3 +47,4 @@ final class DocumentWarmupViewController: IdentityFlowViewController {
         fatalError("init(coder:) has not been implemented")
     }
 }
+#endif /// visionOS

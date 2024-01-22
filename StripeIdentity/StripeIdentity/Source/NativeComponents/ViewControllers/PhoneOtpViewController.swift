@@ -5,6 +5,7 @@
 //  Created by Chen Cen on 6/14/23.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeUICore
 import UIKit
 
@@ -157,3 +158,4 @@ extension PhoneOtpViewController: IdentityDataCollecting {
         return [.phoneOtp]
     }
 }
+#endif /// visionOS

@@ -1,3 +1,4 @@
+#if !os(visionOS)
 @_spi(STP) import StripeCore
 /// Our high-level goal with this class is to implement the logic needed for our card verify check while
 /// adding minimal UI effects, and for any UI effects that we do add make them easily customized
@@ -308,3 +309,4 @@ class VerifyCardViewController: SimpleScanViewController {
         verifyDelegate?.verifyViewControllerDidCancel(self, with: .back)
     }
 }
+#endif /// visionOS

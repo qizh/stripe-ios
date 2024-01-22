@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import AVKit
 import Foundation
 @_spi(STP) import StripeCameraCore
@@ -273,3 +274,4 @@ extension ImageScanningSession {
         }
     }
 }
+#endif /// visionOS

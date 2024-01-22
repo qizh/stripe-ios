@@ -150,6 +150,7 @@ final class HTMLTextView: UIView {
 }
 
 extension HTMLTextView: UITextViewDelegate {
+	#if !os(visionOS)
     func textView(
         _ textView: UITextView,
         shouldInteractWith url: URL,
@@ -158,6 +159,7 @@ extension HTMLTextView: UITextViewDelegate {
         viewModel?.didOpenURL(url)
         return false
     }
+	#endif /// visionOS
 
     func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
         // textView.isEditable must be true for links to be able to be opened on

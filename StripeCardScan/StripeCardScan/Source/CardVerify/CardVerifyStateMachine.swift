@@ -5,6 +5,7 @@
 //  Created by Adam Wushensky on 8/7/20.
 //
 
+#if !os(visionOS)
 import Foundation
 
 typealias StrictModeFramesCount = CardImageVerificationSheet.StrictModeFrameCount
@@ -323,3 +324,4 @@ class CardVerifyAccurateStateMachine: OcrMainLoopStateMachine, CardVerifyStateMa
         )
     }
 }
+#endif /// visionOS

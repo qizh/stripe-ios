@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import CoreVideo
 @_spi(STP) import StripeCameraCore
 @_spi(STP) import StripeCore
@@ -67,3 +68,4 @@ extension FaceScanner: ImageScanner {
         faceDetector.metricsTracker?.reset()
     }
 }
+#endif /// visionOS

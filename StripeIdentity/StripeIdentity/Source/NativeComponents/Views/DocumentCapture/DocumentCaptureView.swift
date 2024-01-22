@@ -6,6 +6,7 @@
 //  Copyright © 2021 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeUICore
 import UIKit
 
@@ -74,3 +75,4 @@ extension DocumentCaptureView {
         stackView.addArrangedSubview(errorView)
     }
 }
+#endif /// visionOS

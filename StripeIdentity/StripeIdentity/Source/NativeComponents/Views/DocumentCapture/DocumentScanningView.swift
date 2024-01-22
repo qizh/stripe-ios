@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCameraCore
 @_spi(STP) import StripeUICore
@@ -202,3 +203,4 @@ extension DocumentScanningView {
         overlayMaskLayer.path = path.cgPath
     }
 }
+#endif /// visionOS

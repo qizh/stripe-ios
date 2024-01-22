@@ -6,6 +6,7 @@
 //  Copyright © 2020 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import UIKit
 
 @available(macCatalyst 14.0, *)
@@ -65,3 +66,4 @@ class STPCardScannerTableViewCell: UITableViewCell {
         super.init(coder: aDecoder)
     }
 }
+#endif /// visionOS

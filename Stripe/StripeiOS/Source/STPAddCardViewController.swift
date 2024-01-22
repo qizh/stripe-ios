@@ -13,8 +13,15 @@
 import UIKit
 
 /// This view controller contains a credit card entry form that the user can fill out. On submission, it will use the Stripe API to convert the user's card details to a Stripe token. It renders a right bar button item that submits the form, so it must be shown inside a `UINavigationController`.
+
+#if os(visionOS)
+@available(macCatalyst 14.0, *)
+@objc protocol STPCardScannerDelegate: NSObjectProtocol {
+}
+#endif
+
 public class STPAddCardViewController: STPCoreTableViewController, STPAddressViewModelDelegate,
-    STPCardScannerDelegate, STPPaymentCardTextFieldDelegate, UITableViewDelegate,
+	STPCardScannerDelegate, STPPaymentCardTextFieldDelegate, UITableViewDelegate,
     UITableViewDataSource
 {
 
@@ -137,7 +144,8 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
     private weak var cardImageView: UIImageView?
     private var doneItem: UIBarButtonItem?
     private var cardHeaderView: STPSectionHeaderView?
-
+	
+	#if !os(visionOS)
     @available(macCatalyst 14.0, *)
     private var cardScanner: STPCardScanner? {
         get {
@@ -147,10 +155,12 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
             _cardScanner = newValue
         }
     }
+	#endif /// visionOS
 
     /// Storage for `cardScanner`.
     private var _cardScanner: NSObject?
 
+	#if !os(visionOS)
     @available(macCatalyst 14.0, *)
     private var scannerCell: STPCardScannerTableViewCell? {
         get {
@@ -160,6 +170,7 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
             _scannerCell = newValue
         }
     }
+	#endif /// visionOS
 
     /// Storage for `scannerCell`.
     private var _scannerCell: NSObject?
@@ -255,10 +266,12 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
         hasUsedShippingAddress = false
         addressViewModel.delegate = self
         title = STPLocalizedString("Add a Card", "Title for Add a Card view")
-
+		
+		#if !os(visionOS)
         if #available(macCatalyst 14.0, *) {
             cardScanner = STPCardScanner()
         }
+		#endif /// visionOS
     }
 
     /// :nodoc:
@@ -395,6 +408,7 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
     }
 
     func setUpCardScanningIfAvailable() {
+		#if !os(visionOS)
         if #available(macCatalyst 14.0, *) {
             if !STPCardScanner.cardScanningAvailable || configuration?.cardScanningEnabled != true {
                 return
@@ -418,13 +432,16 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
             )
             cardHeaderView?.setNeedsLayout()
         }
+		#endif /// visionOS
     }
-
+	
     @available(macCatalyst 14.0, *)
     @objc func scanCard() {
+		#if !os(visionOS)
         view.endEditing(true)
         isScanning = true
         cardScanner?.start()
+		#endif /// visionOS
     }
 
     @objc func endEditing() {
@@ -451,7 +468,9 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
         for cell in addressViewModel.addressCells {
             cell.theme = theme
         }
+		#if !os(visionOS)
         setNeedsStatusBarAppearanceUpdate()
+		#endif /// visionOS
     }
 
     /// :nodoc:
@@ -563,8 +582,10 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
         // The inputAccessoryToolbar switches from the paymentCell to the first address field.
         // It should only be shown when there *is* an address field. This compensates for the lack
         // of a 'Return' key on the number pad used for paymentCell entry
-        let hasAddressCells = (addressViewModel.addressCells.count) > 0
+		#if !os(visionOS)
+		let hasAddressCells = (addressViewModel.addressCells.count) > 0
         paymentCell?.inputAccessoryView = hasAddressCells ? inputAccessoryToolbar : nil
+		#endif /// visionOS
     }
 
     // MARK: - STPPaymentCardTextField
@@ -629,9 +650,11 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
 
     @objc
     public func paymentCardTextFieldDidBeginEditing(_ textField: STPPaymentCardTextField) {
+		#if !os(visionOS)
         if #available(macCatalyst 14.0, *) {
             cardScanner?.stop()
         }
+		#endif /// visionOS
     }
 
     // MARK: - STPAddressViewModelDelegate
@@ -696,11 +719,15 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
         case STPPaymentCardSection.stpPaymentCardNumberSection.rawValue:
             cell = paymentCell
         case STPPaymentCardSection.stpPaymentCardScannerSection.rawValue:
+			#if !os(visionOS)
             if #available(macCatalyst 14.0, *) {
                 cell = scannerCell
             } else {
                 return UITableViewCell()
             }
+			#else
+			return UITableViewCell()
+			#endif /// visionOS
         case STPPaymentCardSection.stpPaymentCardBillingAddressSection.rawValue:
             cell = addressViewModel.addressCells.stp_boundSafeObject(at: indexPath.row)
         default:
@@ -821,12 +848,14 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
         with coordinator: UIViewControllerTransitionCoordinator
     ) {
         super.viewWillTransition(to: size, with: coordinator)
+		#if !os(visionOS)
         let orientation = UIDevice.current.orientation
         if orientation.isPortrait || orientation.isLandscape {
             if #available(macCatalyst 14.0, *) {
                 cardScanner?.deviceOrientation = orientation
             }
         }
+		#endif /// visionOS
         if isScanning {
             let indexPath = IndexPath(
                 row: 0,
@@ -840,6 +869,7 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
 
     static let cardScannerKSTPCardScanAnimationTime: TimeInterval = 0.04
 
+	#if !os(visionOS)
     @available(macCatalyst 14.0, *)
     func cardScanner(
         _ scanner: STPCardScanner,
@@ -897,7 +927,7 @@ public class STPAddCardViewController: STPCoreTableViewController, STPAddressVie
             isScanning = false
         }
     }
-
+	#endif /// visionOS
 }
 
 /// An `STPAddCardViewControllerDelegate` is notified when an `STPAddCardViewController`

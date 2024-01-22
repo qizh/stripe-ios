@@ -1,3 +1,4 @@
+#if !os(visionOS)
 @_spi(STP) import StripeCore
 import UIKit
 
@@ -49,7 +50,8 @@ class VerifyCardAddViewController: SimpleScanViewController {
         super.viewDidLoad()
     }
 
-    override func createOcrMainLoop() -> OcrMainLoop? {
+    // override 
+	func createOcrMainLoop() -> OcrMainLoop? {
         var uxAndOcrMainLoop = UxAndOcrMainLoop(
             stateMachine: CardVerifyStateMachine(
                 strictModeFramesCount: configuration.strictModeFrames
@@ -200,3 +202,4 @@ class VerifyCardAddViewController: SimpleScanViewController {
         verifyDelegate?.verifyViewControllerDidCancel(self, with: .userCannotScan)
     }
 }
+#endif /// visionOS

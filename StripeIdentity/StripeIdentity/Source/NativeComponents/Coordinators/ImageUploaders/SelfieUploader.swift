@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCameraCore
 @_spi(STP) import StripeCore
@@ -136,3 +137,4 @@ extension SelfieUploader {
         }
     }
 }
+#endif /// visionOS

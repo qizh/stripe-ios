@@ -6,6 +6,7 @@
 //  Copyright © 2021 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import CoreVideo
 @_spi(STP) import StripeCameraCore
 @_spi(STP) import StripeCore
@@ -157,3 +158,4 @@ extension IDDetectorOutput.Classification {
         }
     }
 }
+#endif /// visionOS

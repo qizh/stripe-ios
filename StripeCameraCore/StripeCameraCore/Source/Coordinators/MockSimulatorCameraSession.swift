@@ -10,7 +10,7 @@
 // indented, including import statements.
 // swift-format-ignore-file
 
-#if targetEnvironment(simulator)
+#if targetEnvironment(simulator) && !os(visionOS)
 
 import AVKit
 import Foundation

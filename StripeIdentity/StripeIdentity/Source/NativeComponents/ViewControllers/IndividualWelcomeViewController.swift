@@ -5,6 +5,7 @@
 //  Created by Chen Cen on 2/14/23.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeCore
 @_spi(STP) import StripeUICore
 import UIKit
@@ -88,3 +89,4 @@ final class IndividualWelcomeViewController: IdentityFlowViewController {
     }
 
 }
+#endif /// visionOS

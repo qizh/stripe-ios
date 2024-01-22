@@ -9,6 +9,7 @@
 import AVFoundation
 import UIKit
 
+#if !os(visionOS)
 @_spi(STP) public class CameraPreviewView: UIView {
     var videoPreviewLayer: AVCaptureVideoPreviewLayer {
         return layer as! AVCaptureVideoPreviewLayer
@@ -79,3 +80,4 @@ import UIKit
         }
     }
 }
+#endif

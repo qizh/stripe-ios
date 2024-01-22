@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import Foundation
 import UIKit
 
@@ -32,3 +33,4 @@ extension IdentityDataCollecting where Self: IdentityFlowViewController {
         clearCollectedFields()
     }
 }
+#endif /// visionOS

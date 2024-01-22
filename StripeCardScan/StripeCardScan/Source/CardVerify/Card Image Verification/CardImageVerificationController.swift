@@ -5,6 +5,7 @@
 //  Created by Jaime Park on 11/17/21.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCore
 import UIKit
@@ -158,3 +159,4 @@ extension CardImageVerificationController: VerifyViewControllerDelegate {
         )
     }
 }
+#endif /// visionOS

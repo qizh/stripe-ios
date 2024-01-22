@@ -5,7 +5,7 @@
 //  Created by Scott Grant on 9/25/22.
 //
 
-#if targetEnvironment(simulator)
+#if targetEnvironment(simulator) && !os(visionOS)
 
     import Foundation
     import UIKit

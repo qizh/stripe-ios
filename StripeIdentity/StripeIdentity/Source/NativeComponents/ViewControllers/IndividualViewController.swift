@@ -6,6 +6,7 @@
 //  Copyright © 2021 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeUICore
 import UIKit
 
@@ -99,3 +100,4 @@ extension IndividualViewController: ElementDelegate {
         // no-op
     }
 }
+#endif /// visionOS

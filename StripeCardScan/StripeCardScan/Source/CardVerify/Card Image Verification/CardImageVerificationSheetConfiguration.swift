@@ -5,6 +5,7 @@
 //  Created by Jaime Park on 3/11/22.
 //
 
+#if !os(visionOS)
 import Foundation
 import UIKit
 
@@ -41,3 +42,4 @@ extension CardImageVerificationSheet {
         }
     }
 }
+#endif /// visionOS

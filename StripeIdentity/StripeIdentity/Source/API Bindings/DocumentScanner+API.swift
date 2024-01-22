@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCore
 import Vision
@@ -43,3 +44,4 @@ extension StripeAPI.VerificationPageStaticContentDocumentCapturePage {
         return VNBarcodeSymbology(fromStringValue: symbologyString)
     }
 }
+#endif /// visionOS

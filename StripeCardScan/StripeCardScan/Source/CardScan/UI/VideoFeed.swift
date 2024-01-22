@@ -1,3 +1,4 @@
+#if !os(visionOS)
 import AVKit
 import VideoToolbox
 
@@ -242,3 +243,4 @@ class VideoFeed {
         }
     }
 }
+#endif /// visionOS

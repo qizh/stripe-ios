@@ -6,6 +6,7 @@
 //  Copyright © 2021 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import SafariServices
 @_spi(STP) import StripeCameraCore
 @_spi(STP) import StripeCore
@@ -830,3 +831,4 @@ extension Set<StripeAPI.VerificationPageFieldType> {
         }
     }
 }
+#endif /// visionOS

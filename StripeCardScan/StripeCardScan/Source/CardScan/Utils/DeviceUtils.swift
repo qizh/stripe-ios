@@ -5,7 +5,7 @@
 //  Created by Jaime Park on 4/15/21.
 //
 
-import CoreTelephony
+// import CoreTelephony
 import Foundation
 import UIKit
 
@@ -62,6 +62,9 @@ struct DeviceUtils {
     }
 
     static internal func getCarrier() -> String? {
+		#if os(visionOS)
+		return nil
+		#else
         let networkInfo = CTTelephonyNetworkInfo()
         guard
             let firstNamedCarrier = networkInfo.serviceSubscriberCellularProviders?.first(where: {
@@ -72,6 +75,7 @@ struct DeviceUtils {
         }
 
         return firstNamedCarrier.carrierName
+		#endif
     }
 
     static internal func getOsVersion() -> String {

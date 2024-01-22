@@ -108,10 +108,8 @@ final class AnimatedBorderView: UIView {
     override func willMove(toWindow newWindow: UIWindow?) {
         super.willMove(toWindow: newWindow)
 
-        if let window = window {
-            gradientLayer.shouldRasterize = true
-            gradientLayer.rasterizationScale = window.screen.scale
-        }
+		gradientLayer.shouldRasterize = true
+		gradientLayer.rasterizationScale = UITraitCollection.current.displayScale
 
         if isAnimating {
             startAnimating()

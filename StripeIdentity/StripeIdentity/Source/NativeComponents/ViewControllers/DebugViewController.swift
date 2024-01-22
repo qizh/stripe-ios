@@ -5,6 +5,7 @@
 //  Created by Chen Cen on 4/17/23.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeUICore
 import UIKit
@@ -85,3 +86,4 @@ extension DebugViewController: DebugViewDelegate {
         self.updateUI()
     }
 }
+#endif /// visionOS

@@ -10,6 +10,7 @@ import AVKit
 import Foundation
 import UIKit
 
+#if !os(visionOS)
 @_spi(STP) extension UIDeviceOrientation {
     public var videoOrientation: AVCaptureVideoOrientation {
         switch UIDevice.current.orientation {
@@ -24,3 +25,4 @@ import UIKit
         }
     }
 }
+#endif

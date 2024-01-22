@@ -9,6 +9,7 @@
 import Foundation
 import Vision
 
+#if !os(visionOS)
 extension DocumentScanner {
     struct Configuration {
         // MARK: ID Detector
@@ -41,3 +42,4 @@ extension DocumentScanner {
         let highResImageCorpPadding: CGFloat
     }
 }
+#endif /// visionOS

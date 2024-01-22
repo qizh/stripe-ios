@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import Foundation
 @_spi(STP) import StripeCameraCore
 
@@ -40,3 +41,4 @@ struct DocumentScannerOutput: Equatable {
         }
     }
 }
+#endif /// visionOS

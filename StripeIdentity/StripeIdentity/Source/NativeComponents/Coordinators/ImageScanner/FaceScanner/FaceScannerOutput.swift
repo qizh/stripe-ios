@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import CoreGraphics
 import Foundation
 @_spi(STP) import StripeCameraCore
@@ -83,3 +84,4 @@ extension FaceScannerOutput {
         return coverage > min && coverage < max
     }
 }
+#endif /// visionOS

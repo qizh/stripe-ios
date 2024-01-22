@@ -1,3 +1,4 @@
+#if !os(visionOS)
 import UIKit
 
 extension SimpleScanViewController {
@@ -22,3 +23,4 @@ extension SimpleScanViewController {
         activityIndicator.centerYAnchor.constraint(equalTo: container.centerYAnchor).isActive = true
     }
 }
+#endif /// visionOS

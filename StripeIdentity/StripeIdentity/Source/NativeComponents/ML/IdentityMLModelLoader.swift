@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import CoreML
 import Foundation
 @_spi(STP) import StripeCore
@@ -177,3 +178,4 @@ final class IdentityMLModelLoader: IdentityMLModelLoaderProtocol {
         }
     }
 }
+#endif /// visionOS

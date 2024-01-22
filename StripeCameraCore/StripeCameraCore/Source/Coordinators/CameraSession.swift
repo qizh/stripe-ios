@@ -16,6 +16,7 @@ import AVKit
     case configurationFailed
 }
 
+#if !os(visionOS)
 @_spi(STP) public protocol CameraSessionProtocol: AnyObject {
 
     var previewView: CameraPreviewView? { get set }
@@ -506,3 +507,4 @@ extension Result where Success == Void, Failure == Error {
         }
     }
 }
+#endif

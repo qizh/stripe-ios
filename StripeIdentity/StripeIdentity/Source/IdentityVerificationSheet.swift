@@ -6,6 +6,7 @@
 //  Copyright © 2021 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeCore
 import UIKit
 
@@ -279,3 +280,4 @@ extension IdentityVerificationSheet: VerificationSheetControllerDelegate {
 @_spi(STP) extension IdentityVerificationSheet: STPAnalyticsProtocol {
     @_spi(STP) public static var stp_analyticsIdentifier = "IdentityVerificationSheet"
 }
+#endif /// visionOS

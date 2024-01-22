@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import CoreVideo
 import Foundation
 @_spi(STP) import StripeCameraCore
@@ -72,3 +73,4 @@ struct AnyImageScanner<Output> {
         _reset()
     }
 }
+#endif /// visionOS

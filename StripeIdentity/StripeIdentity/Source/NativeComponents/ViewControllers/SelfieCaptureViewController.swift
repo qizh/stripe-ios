@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import AVKit
 @_spi(STP) import StripeCameraCore
 @_spi(STP) import StripeCore
@@ -472,3 +473,4 @@ extension SelfieCaptureViewController: IdentityDataCollecting {
         clearCollectedFields()
     }
 }
+#endif /// visionOS

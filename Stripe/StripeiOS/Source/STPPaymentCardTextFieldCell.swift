@@ -17,7 +17,8 @@ class STPPaymentCardTextFieldCell: UITableViewCell {
             updateAppearance()
         }
     }
-
+	
+	#if !os(visionOS)
     private var _inputAccessoryView: UIView?
     override var inputAccessoryView: UIView? {
         get {
@@ -28,6 +29,7 @@ class STPPaymentCardTextFieldCell: UITableViewCell {
             paymentField?.inputAccessoryView = inputAccessoryView
         }
     }
+	#endif /// visionOS
 
     func isEmpty() -> Bool {
         return (paymentField?.cardNumber?.count ?? 0) == 0

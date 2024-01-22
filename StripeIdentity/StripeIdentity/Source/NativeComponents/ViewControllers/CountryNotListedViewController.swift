@@ -5,6 +5,7 @@
 //  Created by Chen Cen on 2/4/23.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeCore
 @_spi(STP) import StripeUICore
 import UIKit
@@ -103,3 +104,4 @@ fileprivate extension Button.Configuration {
         return identityCountryNotListed
     }
 }
+#endif /// visionOS

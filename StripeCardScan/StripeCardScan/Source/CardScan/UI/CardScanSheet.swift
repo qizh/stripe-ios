@@ -5,6 +5,7 @@
 //  Created by Scott Grant on 6/3/22.
 //
 
+#if !os(visionOS)
 import Foundation
 import UIKit
 
@@ -84,3 +85,4 @@ extension CardScanSheet: SimpleScanDelegate {
         completion?(.completed(card: scannedCard))
     }
 }
+#endif /// visionOS

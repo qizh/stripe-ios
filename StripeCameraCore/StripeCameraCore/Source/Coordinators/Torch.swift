@@ -25,10 +25,13 @@ struct Torch {
         self.state = .off
         self.lastStateChange = Date()
         if device.hasTorch {
+			#if !os(visionOS)
             self.device = device
             if device.isTorchActive {
                 self.state = .on
             }
+			#endif
+			self.device = nil
         } else {
             self.device = nil
         }
@@ -39,11 +42,14 @@ struct Torch {
         self.state = self.state == .on ? .off : .on
         do {
             try self.device?.lockForConfiguration()
+			#if !os(visionOS)
             if self.state == .on {
                 try self.device?.setTorchModeOn(level: self.level)
             } else {
                 self.device?.torchMode = .off
             }
+			#endif
+			self.device?.torchMode = .off
         } catch {
             // no-op
         }

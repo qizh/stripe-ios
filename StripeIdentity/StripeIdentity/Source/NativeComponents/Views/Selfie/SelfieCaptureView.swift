@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeUICore
 import UIKit
 
@@ -104,3 +105,4 @@ extension SelfieCaptureView {
         ])
     }
 }
+#endif /// visionOS

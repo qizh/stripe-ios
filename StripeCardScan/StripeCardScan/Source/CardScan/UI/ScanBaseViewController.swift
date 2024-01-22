@@ -1,3 +1,4 @@
+#if !os(visionOS)
 import AVKit
 import UIKit
 import Vision
@@ -580,3 +581,4 @@ class ScanBaseViewController: UIViewController, AVCaptureVideoDataOutputSampleBu
         )
     }
 }
+#endif

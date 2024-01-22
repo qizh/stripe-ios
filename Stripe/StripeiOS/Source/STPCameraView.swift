@@ -6,6 +6,7 @@
 //  Copyright © 2020 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import AVFoundation
 import UIKit
 
@@ -75,3 +76,4 @@ class STPCameraView: UIView {
         super.init(coder: aDecoder)
     }
 }
+#endif /// visionOS

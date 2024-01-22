@@ -125,8 +125,10 @@ public class STPCoreViewController: UIViewController {
         cancelItem?.stp_setTheme(navBarTheme)
 
         view.backgroundColor = theme.primaryBackgroundColor
-
+		
+		#if !os(visionOS)
         setNeedsStatusBarAppearanceUpdate()
+		#endif /// visionOS
     }
 
     /// :nodoc:

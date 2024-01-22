@@ -6,6 +6,7 @@
 //  Copyright © 2022 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 import Foundation
 
 extension DocumentFileUploadViewController {
@@ -84,3 +85,4 @@ extension DocumentFileUploadViewController {
         }
     }
 }
+#endif /// visionOS

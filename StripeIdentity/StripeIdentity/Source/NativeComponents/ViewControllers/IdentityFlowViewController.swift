@@ -6,6 +6,7 @@
 //  Copyright © 2021 Stripe, Inc. All rights reserved.
 //
 
+#if !os(visionOS)
 @_spi(STP) import StripeCore
 @_spi(STP) import StripeUICore
 import UIKit
@@ -207,3 +208,4 @@ extension IdentityFlowViewController {
         self.present(consentBottomSheetViewController, animated: true, completion: nil)
     }
 }
+#endif /// visionOS

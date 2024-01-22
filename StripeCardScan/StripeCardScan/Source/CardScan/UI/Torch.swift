@@ -16,17 +16,22 @@ struct Torch {
     ) {
         self.state = .off
         self.lastStateChange = Date()
+		#if os(visionOS)
+		self.device = nil
+		#else
         if device.hasTorch {
             self.device = device
             if device.isTorchActive { self.state = .on }
         } else {
             self.device = nil
         }
+		#endif
         self.level = 1.0
     }
 
     /// TODO(jaimepark): Refactor
     mutating func toggle() {
+		#if !os(visionOS)
         self.state = self.state == .on ? .off : .on
         do {
             try self.device?.lockForConfiguration()
@@ -43,6 +48,7 @@ struct Torch {
         } catch {
             // no-op
         }
+		#endif
     }
 
 }
